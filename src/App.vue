@@ -46,7 +46,7 @@ onBeforeUnmount(() => {
     :style="{ backgroundImage: `url(${bgPattern})` }">
     <header class="flex shrink-0 items-center justify-center">
       <div class="bg-primary p-3 pt-7.5 rounded-b-full">
-        <img src="/logo.webp" alt="Монгол Улсын Их Сургууль" class="h-14 w-auto sm:h-18" />
+        <img src="/logo.webp" alt="Монгол Улсын Их Сургууль" class="h-18 w-auto sm:h-24" />
       </div>
     </header>
 
