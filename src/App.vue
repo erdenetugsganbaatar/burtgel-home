@@ -50,15 +50,12 @@ onBeforeUnmount(() => {
       </div>
     </header>
 
-    <main class="relative flex flex-1 items-center justify-center p-2 sm:p-8">
+    <main class="flex w-full flex-1 items-center  justify-evenly gap-2 p-2 sm:gap-4 sm:p-8">
       <img :src="muisScript" alt=""
-        class="pointer-events-none absolute  max-h-[700px] left-3 top-1/2 hidden h-[85%] w-auto -translate-y-1/2 select-none opacity-90 md:block"
-        aria-hidden="true" />
-      <img :src="uriaScript" alt=""
-        class="pointer-events-none absolute  max-h-[700px] right-3 top-1/2 hidden h-[70%] w-auto -translate-y-1/2 select-none opacity-90 md:block"
+        class="pointer-events-none hidden h-[85%] max-h-[700px] w-auto shrink-0 select-none opacity-90 lg:block"
         aria-hidden="true" />
 
-      <div class="relative z-10 flex flex-wrap justify-center gap-2 sm:gap-4">
+      <div class="flex min-w-0 flex-wrap items-center justify-center gap-10 sm:gap-20">
         <Card ref="card1" :icon="graduateIcon" title="Бакалаврын өдрийн хөтөлбөрийн элсэлтийн систем"
           subtitle="Бакалаврын өдөр (элсэлтийн ерөнхий шалгалтын оноо шаардахгүй), бакалаврын орой, бакалаврын эчнээ, магистр, докторын хөтөлбөрийн элсэлт эсвэл бүх түвшний хөтөлбөрийн шилжилтийн үйл ажиллагаа"
           href="https://burtgel.num.edu.mn/bachelor" :style="{ height: matchedHeight }" />
@@ -66,6 +63,10 @@ onBeforeUnmount(() => {
           subtitle="Доктор, магистр, бакалаврын орой/эчнээ, иргэний сургалт, бакалаврын зэрэгтэй иргэн бакалаврын өдрийн хөтөлбөрт элсэх болон шилжих хүсэлт гаргах"
           href="https://burtgel.num.edu.mn/negdsen" :style="{ height: matchedHeight }" />
       </div>
+
+      <img :src="uriaScript" alt=""
+        class="pointer-events-none hidden h-[70%] max-h-[700px] w-auto shrink-0 select-none opacity-90 lg:block"
+        aria-hidden="true" />
     </main>
 
     <footer class="flex shrink-0 flex-col items-center gap-4 px-4 pb-6">
