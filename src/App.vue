@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Card from './components/Card.vue'
-import graduateIcon from './assets/icon/graduate.svg'
-import docIcon from './assets/icon/doc.svg'
+import graduateIcon from './assets/icon/graduate-bachelor.svg'
+import docIcon from './assets/icon/graduate-negdsen.svg'
 import muisScript from './assets/muis_script.svg'
 import uriaScript from './assets/uria_script.svg'
 import bgPattern from './assets/bg-pattern.png'
@@ -26,7 +26,7 @@ import bgPattern from './assets/bg-pattern.png'
 
       <div class="relative z-10 flex flex-wrap justify-center gap-2 sm:gap-4">
         <Card :icon="graduateIcon" title="Бакалаврын өдрийн хөтөлбөрийн элсэлтийн систем"
-          subtitle="Ерөнхий боловсролын сургуулийн төгсөгчид"
+          subtitle="Бакалаврын өдөр (элсэлтийн ерөнхий шалгалтын оноо шаардахгүй), бакалаврын орой, бакалаврын эчнээ, магистр, докторын хөтөлбөрийн элсэлт эсвэл бүх түвшний хөтөлбөрийн шилжилтийн үйл ажиллагаа"
           href="https://burtgel.num.edu.mn/bachelor" />
         <Card :icon="docIcon" title="Нэгдсэн бүртгэлийн систем"
           subtitle="Доктор, магистр, бакалаврын орой/эчнээ, иргэний сургалт, бакалаврын зэрэгтэй иргэн бакалаврын өдрийн хөтөлбөрт элсэх болон шилжих хүсэлт гаргах"
