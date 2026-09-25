@@ -1,10 +1,44 @@
 <script setup lang="ts">
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 import Card from './components/Card.vue'
 import graduateIcon from './assets/icon/graduate-bachelor.svg'
 import docIcon from './assets/icon/graduate-negdsen.svg'
 import muisScript from './assets/muis_script.svg'
 import uriaScript from './assets/uria_script.svg'
 import bgPattern from './assets/bg-pattern.png'
+
+type CardHandle = { root: HTMLElement | null } | null
+
+const card1 = ref<CardHandle>(null)
+const card2 = ref<CardHandle>(null)
+const matchedHeight = ref<string | undefined>(undefined)
+
+function syncCardHeights() {
+  matchedHeight.value = undefined
+  requestAnimationFrame(() => {
+    const heights = [card1.value?.root?.offsetHeight, card2.value?.root?.offsetHeight].filter(
+      (h): h is number => !!h,
+    )
+    if (heights.length < 2) return
+    matchedHeight.value = `${Math.max(...heights)}px`
+  })
+}
+
+let resizeTimeout: ReturnType<typeof setTimeout>
+function onResize() {
+  clearTimeout(resizeTimeout)
+  resizeTimeout = setTimeout(syncCardHeights, 100)
+}
+
+onMounted(() => {
+  syncCardHeights()
+  window.addEventListener('resize', onResize)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', onResize)
+  clearTimeout(resizeTimeout)
+})
 </script>
 
 <template>
@@ -25,12 +59,12 @@ import bgPattern from './assets/bg-pattern.png'
         aria-hidden="true" />
 
       <div class="relative z-10 flex flex-wrap justify-center gap-2 sm:gap-4">
-        <Card :icon="graduateIcon" title="Бакалаврын өдрийн хөтөлбөрийн элсэлтийн систем"
+        <Card ref="card1" :icon="graduateIcon" title="Бакалаврын өдрийн хөтөлбөрийн элсэлтийн систем"
           subtitle="Бакалаврын өдөр (элсэлтийн ерөнхий шалгалтын оноо шаардахгүй), бакалаврын орой, бакалаврын эчнээ, магистр, докторын хөтөлбөрийн элсэлт эсвэл бүх түвшний хөтөлбөрийн шилжилтийн үйл ажиллагаа"
-          href="https://burtgel.num.edu.mn/bachelor" />
-        <Card :icon="docIcon" title="Нэгдсэн бүртгэлийн систем"
+          href="https://burtgel.num.edu.mn/bachelor" :style="{ height: matchedHeight }" />
+        <Card ref="card2" :icon="docIcon" title="Нэгдсэн бүртгэлийн систем"
           subtitle="Доктор, магистр, бакалаврын орой/эчнээ, иргэний сургалт, бакалаврын зэрэгтэй иргэн бакалаврын өдрийн хөтөлбөрт элсэх болон шилжих хүсэлт гаргах"
-          href="https://burtgel.num.edu.mn/negdsen" />
+          href="https://burtgel.num.edu.mn/negdsen" :style="{ height: matchedHeight }" />
       </div>
     </main>
 

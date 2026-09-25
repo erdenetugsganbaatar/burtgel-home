@@ -1,6 +1,6 @@
 <template>
-  <div
-    class="relative isolate overflow-hidden rounded-[28px] bg-white shadow-[0_10px_30px_rgba(15,63,143,0.16)] ring-1 ring-black/5 aspect-[500/317] max-w-[500px]">
+  <div ref="root"
+    class="relative isolate overflow-hidden rounded-[28px] bg-white shadow-[0_10px_30px_rgba(15,63,143,0.16)] ring-1 ring-black/5 max-w-[500px]">
     <svg class="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 500 290" preserveAspectRatio="none"
       aria-hidden="true">
       <path d="M395 0 H500 V60 C470 25 430 10 395 0 Z" fill="#EFF7FC" />
@@ -52,10 +52,15 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+
 defineProps<{
   icon: string
   title: string
   subtitle?: string
   href: string
 }>()
+
+const root = ref<HTMLElement | null>(null)
+defineExpose({ root })
 </script>
